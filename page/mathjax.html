@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>MathJax 公式编辑器</title>
+<style type="text/css">
+<!--
+body {
+  margin: 0;
+  text-align: center;
+  background: #ffffb9;
+}
+#mathdiv {
+  margin: auto;
+  height: 50%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  display: table;
+}
+#mathdiv > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+textarea {
+  height: 50%;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #ffffd8;
+  padding: 1em;
+  margin: 0;
+}
+body > a {
+  display: none; /* don't ruin the layout */
+}
+-->
+</style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/latest/MathJax.js?config=default" defer></script>
+
+<body>
+<div id="mathdiv">$${}$$</div>
+<textarea id="formula" placeholder="Input TeX formula here."></textarea>
+<script type="text/javascript" defer>
+<!--
+var resize = function(){
+  document.body.style.height = window.innerHeight + 'px';
+};
+resize();
+var formula = document.getElementById("formula");
+if(location.hash){
+  formula.value = decodeURIComponent(location.hash.substring(1));
+}
+var hashChanged = function(){
+  if(location.hash){
+    formula.value = decodeURIComponent(location.hash.substring(1));
+  }
+  renderFormula();
+};
+var renderFormula = function(){
+  MathJax.Hub.Queue(function(){
+    var math = MathJax.Hub.getAllJax("MathDiv")[0];
+    MathJax.Hub.Queue(["Text", math, formula.value]);
+    location.hash = formula.value;
+  });
+};
+window.addEventListener('resize', resize, false);
+window.addEventListener('DOMContentLoaded', renderFormula, false);
+window.addEventListener('hashchange', hashChanged, false);
+formula.addEventListener('input', renderFormula, false);
+//-->
+</script>
+</body>
