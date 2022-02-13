@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoom image in to see pixels</title>
+<style type="text/css">
+<!--
+img {
+  image-rendering: crisp-edges;
+}
+-->
+</style>
+<body>
+  <input type="file" id="file" accept="image/*"/>
+  <img id="image"/>
+  <script type="text/javascript">
+  <!--
+  const file_el = document.getElementById('file')
+  const image_el = document.getElementById('image')
+  file_el.addEventListener('change', function(){
+    if(file_el.files.length > 0) {
+      const file = file_el.files[0]
+      const reader = new FileReader()
+      reader.addEventListener("load", function(){
+        image_el.src = reader.result
+      })
+      reader.readAsDataURL(file)
+    }
+  })
+  //-->
+  </script>
+</body>
+</html>
+<!-- vim: set fdm=marker: -->
