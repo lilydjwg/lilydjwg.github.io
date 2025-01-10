@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delay & Redirect</title>
+<body>
+  <p>This page redirects to another URL after some delay. This is a workaround for <a href="https://github.com/grafana/grafana/issues/98657">grafana/grafana#98657</a>.</p>
+  <p>Usage: <code>https://lilydjwg.github.io/page/delayed-redirect.html#delay=1&amp;url=XXX</code></p>
+  <script type="text/javascript">
+  <!--
+  const hash = location.hash
+  let args
+  if (hash) {
+    args = new URLSearchParams(hash.substring(1))
+  }
+  const delay = parseInt(args.get("delay"))
+  const url = args.get("url")
+  if (delay && url) {
+    setTimeout(function() {
+      location.replace(url)
+    }, delay * 1000)
+  }
+  //-->
+  </script>
+</body>
+</html>
+<!-- vim: set fdm=marker: -->
